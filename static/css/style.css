@@ -1,0 +1,216 @@
+html {
+    font-family: Arial;
+}
+
+.main {
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* Login page */
+
+.login_p{
+  margin-bottom: 20px;
+}
+
+.login_btn, .signup_btn {
+  margin-top: 10px;
+  width: 150px;
+}
+
+
+/* Signup page */
+
+.signup_fields{
+  text-align: left;
+  margin-top: 20px;
+}
+
+.button_confirmer {
+  margin-top: 30px;
+  width: 150px;
+}
+
+.button_return {
+  margin-top: 30px;
+  width: 150px;
+  margin-right: 960px;
+}
+
+
+/* The sidebar menu */
+
+.topbar {
+  width: auto;
+  border: 3px solid rgb(111,41,97);
+  border-radius: .5em;
+  padding: 10px;
+  margin-bottom: 20px;
+  margin-left: 200px;
+  margin-right: 200px;
+}
+
+.menu_navigation {
+  padding: 10px;
+}
+
+.menu_disconnect {
+  margin-left: 250px;
+}
+
+.menu_navigation, .menu_disconnect {
+  display: inline;
+}
+
+/* Home page and other*/
+
+h1 {
+  margin-bottom: 30px;
+}
+
+.critique_button, .ticket_button {
+  margin-bottom: 30px;
+  margin-right: 50px;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  width: 200px;
+}
+
+.button_publish_critique, .bouton_poster_une_critique, .button_edit_ticket_save, .button_edit_ticket_delete, .button_edit_critique_delete, .button_edit_critique_save {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 200px;
+}
+
+.button_publish_ticket{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 20px;
+  margin-left: 0px;
+  width: 200px;
+}
+
+.btn_search_user, .btn_follow_to_user, .btn_unfollow_to_user {
+  color: darkblue;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+  width: 150px;
+}
+
+input#id_search {
+  padding: 20px;
+}
+
+.modif_delete_critique{
+  margin-top: 20px;
+}
+
+.user-date, .user-infos {
+  display: inline-block;
+}
+
+.container_home_tickets, .container_home_critiques, .container__tickets {
+  border: 3px solid black;
+  border-radius: .5em;
+  padding: 10px;
+  margin-bottom: 15px;
+  word-wrap: break-word;
+}
+
+.container__tickets_in_create_critique_post, .container__critiques_in_create_critique_post, .container__tickets_in_edit_critique_post {
+  border: 3px solid black;
+  border-radius: .5em;
+  padding: 20px;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  margin-left: 450px;
+  margin-right: 450px;
+  word-wrap: break-word;
+}
+
+.form.form__review, .form.form__edit_ticket {
+  border: 3px solid black;
+  border-radius: .5em;
+  padding: 10px;
+  margin-bottom: 15px;
+  margin-left: 100px;
+  margin-right: 100px;
+  word-wrap: break-word;
+}
+
+.container__critiques {
+  text-align: left;
+}
+
+.create_critique_with_ticket input#id_headline, .edit_critique input#id_headline{
+  padding-right: 100px;
+}
+
+.create_critique_with_ticket input#id_body, .edit_critique input#id_body{
+  padding-right: 150px;
+  padding-left: 300px;
+  padding-bottom: 100px;
+}
+
+#create_ticket input#id_title {
+  padding-right: 30px;
+  padding-left: 50px;
+  margin-top: 30px;
+}
+
+.publish_ticket_and_critique input#id_headline{
+  padding-right: 50px;
+  margin-top: 20px;
+}
+
+.publish_ticket_and_critique input#id_body{
+  padding-right: 150px;
+  padding-left: 300px;
+  padding-bottom: 100px;
+}
+
+.tickets_fields_in_pusblish_both input#id_title {
+  padding-right: 80px;
+  margin-top: 20px;
+}
+
+.tickets_fields_in_pusblish_both, .edit_ticket{
+  border: 3px solid black;
+  border-radius: .5em;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  margin-left: 350px;
+  margin-right: 350px;
+  word-wrap: break-word;
+}
+
+.critique_fields_in_pusblish_both, .edit_critique {
+  border: 3px solid black;
+  border-radius: .5em;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  margin-left: 450px;
+  margin-right: 450px;
+  word-wrap: break-word;
+}
+
+#create_ticket {
+  border: 3px solid black;
+  border-radius: .5em;
+  padding: 10px;
+  padding-bottom: 30px;
+  margin-bottom: 15px;
+  margin-left: 500px;
+  margin-right: 500px;
+  margin-top: 30px;
+  word-wrap: break-word;
+}
+
+.main_followers strong {
+  margin-top: 120px;
+  padding-top: 150px;
+  color: royalblue;
+}

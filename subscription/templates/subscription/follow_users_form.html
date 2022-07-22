@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load user_profile_extras %}
+
+{% block content %}
+
+    <div class="col-25">
+    </div>
+
+    <div class="main_followers">
+        <div class="container__feed followers">
+            {%if request.user.username == requested_user.username %}
+                <h3>Suivre d'autres utilisateurs</h3>
+                <div class="form__search" id="recherche_utilisateur">
+                     <form method="post">
+                        {{ search_form.as_p }}
+                         {% csrf_token %}
+                        <button class="btn_search_user" type="submit" >Rechercher</button>
+                    </form>
+                </div>
+                {% if searched_user_resp %}
+                    <div class="user-follower__user">
+                        <div class="user-follower">
+                            <h3 id="resultat_recherche">Résultat de la recherche :</h3>
+                            <p>
+                                <strong>{{searched_user_resp.username }}</strong>
+                            </p>
+                        </div>
+                        <div>
+                            <form method="post">
+                                {{ searched_user_btn.as_p }}
+                                {% csrf_token %}
+                                <button class="btn_follow_to_user" type="submit" >S'abonner</button>
+                            </form>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endif %}
+            
+            <h3>Abonnements ({{ user_follows|length }})</h3>
+            <hr>
+                {% for user, form in group_user_follows.items %}
+                    <div class="user-follower__user">
+                        <div class="user-follower">
+                            <p>
+                                <strong>{{user.username }}</strong>
+                            </p>
+                        </div>
+
+                        {%if request.user.username == requested_user.username %}
+                        <div>
+                            <form method="post">
+                                {{ form.as_p }}
+                                {% csrf_token %}
+                                <input class="btn_unfollow_to_user" id="follow_btn" type="submit" value="Se désabonner">
+                            </form>
+                        </div>
+                        {% endif %}
+                    </div>
+                <hr>
+                {% endfor %}
+            
+            <h3>Abonnés ({{user_followers|length}})</h3>
+            <hr>
+                {% for user in user_followers %}
+                    <div class="user-follower">
+                        <p>
+                            <a href="{% url 'follow_users' %}">
+                                <strong>{{user.username }}</strong>
+                            </a>
+                        </p>
+                    </div>
+                <hr>
+                {% endfor %}
+
+            
+
+        </div>
+
+    </div>
+
+
+    <div class="col-25">
+
+    </div>
+
+{% endblock content %}

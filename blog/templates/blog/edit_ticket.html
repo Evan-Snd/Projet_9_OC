@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Modifier le ticket :</h2>
+    <div class="form form__edit_ticket">
+        <form method="post">
+            <div class="edit_ticket">
+            {{ edit_ticket_form.as_p }}
+            {% csrf_token %}
+            </div>
+            <h3>Sauvegarder le ticket ?</h3>
+            <button class="button_edit_ticket_save" type="submit" >Sauvegarder</button>
+        </form>
+        <hr>
+        <h3>Supprimer le ticket ?</h3>
+        <form method="post">
+            {{ delete_ticket_form }}
+            {% csrf_token %}
+            <button class="button_edit_ticket_delete" type="submit" >Supprimer</button>
+        </form>
+    </div>
+{% endblock content %}

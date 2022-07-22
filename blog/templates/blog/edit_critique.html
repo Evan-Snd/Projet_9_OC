@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="form form__review">
+        <h2>Modifier votre critique en reponse à : </h2>
+        <div class="container__tickets_in_edit_critique_post">
+            <h3>{{ ticket.title }}</h3>
+            <div class="photo-description">
+                {% if ticket.image %}
+                    <p>
+                        <img src="{{ ticket.image.url }}">
+                    </p>
+                {% endif %}
+                {% if ticket.description|length > 0 %}
+                    <p class="description_ticket">{{ ticket.description }}</p>
+                {% endif %}
+            </div>
+        </div>
+        <form method="post">
+            <div class="edit_critique">
+            {{ edit_critique_form.as_p }}
+            {% csrf_token %}
+            <button class="button_edit_critique_save" type="submit" >Sauvegarder</button>
+            </div>
+        </form>
+        <hr>
+        <h3>Supprimer la critique ?</h3>
+        <form method="post">
+            {{ delete_critique_form }}
+            {% csrf_token %}
+            <button class="button_edit_critique_delete" type="submit" >Supprimer</button>
+        </form>
+    </div>
+{% endblock content %}

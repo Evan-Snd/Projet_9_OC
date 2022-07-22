@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h2>Inscription</h2>
+                <div class="signup_fields">
+                    {% if form.errors %}
+                        {{ form.errors }}
+                    {% endif %}
+                    <form method="post">
+                        {{ form.as_p }}
+                        {% csrf_token %}
+                        <button class="button_confirmer" type="submit" >Confirmer</button>
+                    </form>
+                </div>
+                <button class="button_return" type="button" name="return_button"><a href="{% url 'login' %}">Retourner</a></button>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

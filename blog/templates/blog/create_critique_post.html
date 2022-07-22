@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load blog_extras %}
+{% block content %}
+    <div class="form form__review">
+        {% if both %}
+            <h2>Créer une critique</h2>
+            <form method="post" enctype="multipart/form-data" class="publish_ticket_and_critique">
+                <div class="tickets_fields_in_pusblish_both">
+                    <h4>A propos de ce livre :</h4>
+                    {{ ticket_form.as_p }}
+                </div>
+                <div class="critique_fields_in_pusblish_both">
+                    <h4>Ma critique :</h4>
+                    {{ critique_form.as_p }}
+                    {% csrf_token %}
+                    <button type="submit" >Publier</button>
+                </div>
+            </form>
+        {% else %}
+            <h2>Vous êtes en train de poster en réponse à :</h2>
+            <div class="container__tickets_in_create_critique_post">
+                <h3>{{ ticket.title }}</h3>
+                <div class="photo-description">
+                    {% if ticket.image %}
+                        <p>
+                            <img src="{{ ticket.image.url }}">
+                        </p>
+                    {% endif %}
+                    {% if ticket.description|length > 0 %}
+                        <p class="description_ticket">{{ ticket.description }}</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="container__critiques_in_create_critique_post">
+            <form class="create_critique_with_ticket" method="post">
+                {{ form.as_p }}
+                {% csrf_token %}
+                <button class="button_publish_critique" type="submit" >Publier</button>
+            </form>
+            </div>
+        {% endif %}
+    </div>
+{% endblock content %}

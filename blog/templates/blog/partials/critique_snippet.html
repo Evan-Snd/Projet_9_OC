@@ -1,0 +1,29 @@
+{% load blog_extras %}
+
+    <div class="user-infos-date">
+        <div class="user-infos">
+            <p><strong>{{ critique.user.username }}</strong></a> a publié une critique le </p>
+        </div>
+        <div class ="user-date">
+            <p>{{ critique.time_created }}</p>
+        </div>
+    </div>
+    
+    <div class="container__critiques">
+        <h3> {{ critique.headline }} - {% for i in 0|range:critique.rating %}<i class="fas fa-star">&#9733;</i>{% endfor %}</h3>
+        <p>{{ critique.body }}</p>
+    </div>
+
+    <div class="container__tickets">
+        <h3>{{ critique.ticket.title }}</h3>
+        <div class="photo-description">
+            {% if critique.ticket.image %}
+                <p>
+                    <img src="{{ critique.ticket.image.url }}">
+                </p>
+            {% endif %}
+            {% if critique.ticket.description|length > 0 %}
+                <p class="description_ticket">{{ critique.ticket.description }}</p>
+            {% endif %}
+        </div>
+    </div>

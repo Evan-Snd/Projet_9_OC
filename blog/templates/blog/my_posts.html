@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load blog_extras %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Mes posts :</h1>
+
+                {% for instance in tickets_and_critiques %}
+
+                    {% if instance|model_type == 'Ticket' %}
+
+                        <div class="container_home_tickets {% if instance.has_review %}reviewed{% endif %}">
+                            <div class="user-infos-date">
+                                <div class="user-infos">
+                                    <p><strong>{{ instance.user.username }}</strong></a> a demandé une critique le </p>
+                                </div>
+                                <div class ="user-date">
+                                    <p>{{ instance.time_created }}</p>
+                                </div>
+                            </div>
+                            {% include 'blog/partials/ticket_snippet.html' with ticket=instance %}
+                            <div class="container__buttons">
+                            {% if instance.user == request.user %}
+                                <p><a href="{% url 'edit_ticket' instance.id %}">Modifier/Supprimer le billet</a></p>
+                            {% endif %}
+                            {% if instance.has_critique == False %}
+                                <button type="button" class="bouton_poster_une_critique"><a href="{% url 'create_critique' instance.id %}">Poster une critique</a></button>
+                            {% endif %}
+                            </div>
+                        </div>
+
+                    {% elif instance|model_type == 'Critique' %}
+
+                        <div class="container_home_critiques">
+                            {% include 'blog/partials/critique_snippet.html' with critique=instance %}
+                            {% if instance.user == request.user %}
+                                <p><a href="{% url 'edit_critique' instance.id %}">Modifier/Supprimer la critique</a></p>
+                            {% endif %}
+                        </div>
+
+                    {% endif %}
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}
