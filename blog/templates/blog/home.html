@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
+<<<<<<< HEAD
 {% load static %}
 {% load blog_extras %}
+=======
+>>>>>>> f3dc60dde3dd6edbe4a2fcebb4307cc0156b0a30
 {% block content %}
     <div class="container">
         <div class="row">
             <div class="col">
                 <button type="button" class="ticket_button" name="signup_button"><a href="{% url 'create_ticket' %}">Demander un ticket</a></button>
+<<<<<<< HEAD
 
                 <button type="button" class="critique_button" name="signup_button"><a href="{% url 'create_ticket_and_critique' %}">Créer une critique</a></button>
 
@@ -46,6 +50,16 @@
 
                     {% endif %}
 
+=======
+                <button type="button" class="critique_button" name="signup_button"><a href="{% url 'create_ticket_and_critique' %}">Créer une critique</a></button>
+                <h1>Flux :</h1>
+                {% for t in tickets %}
+                    <p>{{ t.title }}</p>
+                    <img src="{{ t.image.url }}">
+                    <p>{{ t.description }}</p>
+                    <p>{{ t.user }}</p>
+                    <p><a href="{% url 'edit_ticket' t.id %}">Modifier le billet</a></p>
+>>>>>>> f3dc60dde3dd6edbe4a2fcebb4307cc0156b0a30
                 {% endfor %}
             </div>
         </div>

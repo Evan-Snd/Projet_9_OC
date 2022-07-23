@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+<<<<<<< HEAD
     <div class="container">
         <div class="row">
             <div class="col">
@@ -18,4 +19,16 @@
             </div>
         </div>
     </div>
+=======
+    <h2>Inscription</h2>
+    {% if form.errors %}
+        {{ form.errors }}
+    {% endif %}
+    <form method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <button type="submit" >Confirmer</button>
+    </form>
+    <button type="button" name="return_button"><a href="{% url 'login' %}">Retourner</a></button>
+>>>>>>> f3dc60dde3dd6edbe4a2fcebb4307cc0156b0a30
 {% endblock content %}

@@ -1,12 +1,21 @@
+<<<<<<< HEAD
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib.auth.decorators import login_required
 from authentication.models import User
 
 from . import forms
+=======
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
+
+from . import forms, models
+>>>>>>> f3dc60dde3dd6edbe4a2fcebb4307cc0156b0a30
 
 
 @login_required
 def follow_users(request):
+<<<<<<< HEAD
     search_form = forms.SearchUser()
     searched_user_resp = ""
     requested_user = request.user
@@ -62,3 +71,15 @@ def follow_users(request):
         'subscription/follow_users_form.html',
         context
     )
+=======
+    form = forms.FollowUsersForm()
+    if request.method == 'POST':
+        form = forms.FollowUsersForm(request.POST, user=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    # abonnements = models.UserFollows.objects.followed_user.all()
+    # abonnes = models.UserFollows.objects.user.all()
+    return render(request, 'subscription/follow_users_form.html',
+                  context={'form': form})  # 'abonnements': abonnements, 'abonnés': abonnes})
+>>>>>>> f3dc60dde3dd6edbe4a2fcebb4307cc0156b0a30

@@ -15,8 +15,12 @@ def login_page(request):
             if user is not None:
                 login(request, user)
                 return redirect('home')
+<<<<<<< HEAD
             else:
                 message = 'Identifiants invalides.'
+=======
+        message = 'Identifiants invalides.'
+>>>>>>> f3dc60dde3dd6edbe4a2fcebb4307cc0156b0a30
     return render(
         request, 'authentication/login.html', context={'form': form, 'message': message})
 

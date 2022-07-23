@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="form form__review">
+<<<<<<< HEAD
         <h2>Modifier votre critique en reponse à : </h2>
         <div class="container__tickets_in_edit_critique_post">
             <h3>{{ ticket.title }}</h3>
@@ -21,13 +22,24 @@
             {% csrf_token %}
             <button class="button_edit_critique_save" type="submit" >Sauvegarder</button>
             </div>
+=======
+        <h2>Modifier la critique</h2>
+        <form method="post">
+            {{ edit_critique_form.as_p }}
+            {% csrf_token %}
+            <button class="btn" type="submit" >Sauvegarder</button>
+>>>>>>> f3dc60dde3dd6edbe4a2fcebb4307cc0156b0a30
         </form>
         <hr>
         <h3>Supprimer la critique ?</h3>
         <form method="post">
             {{ delete_critique_form }}
             {% csrf_token %}
+<<<<<<< HEAD
             <button class="button_edit_critique_delete" type="submit" >Supprimer</button>
+=======
+            <button class="btn" type="submit" >Supprimer</button>
+>>>>>>> f3dc60dde3dd6edbe4a2fcebb4307cc0156b0a30
         </form>
     </div>
 {% endblock content %}

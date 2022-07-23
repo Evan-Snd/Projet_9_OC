@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+<<<<<<< HEAD
 <div class="container">
     <div class="row">
         <div class="col-6">
@@ -15,4 +16,13 @@
             <h3 class="signup_p">Inscrivez-vous maintenant</h3>
             <button class='login_btn' type="button" name="signup_button"><a href="{% url 'signup' %}">S'inscrire</a></button>
         </div>
+=======
+    <p>{{ message }}</p>
+    <form method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <button type="submit" >Se connecter</button>
+    </form>
+    <button type="button" name="signup_button"><a href="{% url 'signup' %}">S'inscrire</a></button>
+>>>>>>> f3dc60dde3dd6edbe4a2fcebb4307cc0156b0a30
 {% endblock content %}

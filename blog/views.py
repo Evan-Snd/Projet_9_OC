@@ -1,13 +1,17 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+<<<<<<< HEAD
 from itertools import chain
 from authentication.models import User
+=======
+>>>>>>> f3dc60dde3dd6edbe4a2fcebb4307cc0156b0a30
 
 from . import forms, models
 
 
 @login_required
 def home(request):
+<<<<<<< HEAD
     tickets = models.Ticket.objects.filter(user__in=request.user.follows.all())
     critiques = models.Critique.objects.filter(user__in=request.user.follows.all())
     tickets_and_critiques = sorted(chain(tickets, critiques), key=lambda instance: instance.time_created, reverse=True)
@@ -24,10 +28,16 @@ def my_post(request, user):
         reverse=True
     )
     return render(request, 'blog/my_posts.html', context={'tickets_and_critiques': tickets_and_critiques})
+=======
+    tickets = models.Ticket.objects.all()
+    critiques = models.Critique.objects.all()
+    return render(request, 'blog/home.html', context={'tickets': tickets, 'critiques': critiques})
+>>>>>>> f3dc60dde3dd6edbe4a2fcebb4307cc0156b0a30
 
 
 @login_required
 def create_ticket(request):
+<<<<<<< HEAD
     form = forms.TicketForm()
     if request.method == 'POST':
         form = forms.TicketForm(request.POST, request.FILES)
@@ -42,10 +52,27 @@ def create_ticket(request):
         'form': form,
     }
     return render(request, 'blog/create_ticket_post.html', context)
+=======
+    ticket_form = forms.TicketForm()
+    if request.method == 'POST':
+        ticket_form = forms.TicketForm(request.POST, request.FILES)
+        if ticket_form.is_valid():
+            ticket = ticket_form.save(commit=False)
+            ticket.user = request.user
+            if ticket_form.cleaned_data['image']:
+                ticket.image = ticket_form.cleaned_data['image']
+            ticket.save()
+            return redirect('home')
+    context = {
+        'ticket_form': ticket_form,
+}
+    return render(request, 'blog/create_ticket_post.html', context=context)
+>>>>>>> f3dc60dde3dd6edbe4a2fcebb4307cc0156b0a30
 
 
 @login_required
 def create_critique(request, ticket_id):
+<<<<<<< HEAD
     ticket = get_object_or_404(models.Ticket, id=ticket_id)
     if request.method == 'POST':
         form = forms.CritiqueForm(request.POST)
@@ -66,6 +93,22 @@ def create_critique(request, ticket_id):
         'form': form,
     }
     return render(request, 'blog/create_critique_post.html', context)
+=======
+    critique_form = forms.CritiqueForm()
+    if request.method == 'POST':
+        critique_form = forms.CritiqueForm(request.POST)
+        if critique_form.is_valid():
+            critique = critique_form.save(commit=False)
+            critique.user = request.user
+            critique.ticket = get_object_or_404(models.Ticket, id=ticket_id)
+            critique.ticket.save()
+            critique.save()
+            return redirect('home')
+    context = {
+        'critique_form': critique_form,
+}
+    return render(request, 'blog/create_critique_post.html', context=context)
+>>>>>>> f3dc60dde3dd6edbe4a2fcebb4307cc0156b0a30
 
 
 @login_required
@@ -80,15 +123,23 @@ def create_ticket_and_critique(request):
             ticket.user = request.user
             if ticket_form.cleaned_data['image']:
                 ticket.image = ticket_form.cleaned_data['image']
+<<<<<<< HEAD
             ticket.has_critique = True
+=======
+>>>>>>> f3dc60dde3dd6edbe4a2fcebb4307cc0156b0a30
             ticket.save()
             critique = critique_form.save(commit=False)
             critique.user = request.user
             critique.ticket = get_object_or_404(models.Ticket, id=ticket.id)
             critique.save()
+<<<<<<< HEAD
             return redirect('home')
     context = {
         'both': True,
+=======
+            return redirect('feed')
+    context = {
+>>>>>>> f3dc60dde3dd6edbe4a2fcebb4307cc0156b0a30
         'ticket_form': ticket_form,
         'critique_form': critique_form
     }
@@ -129,7 +180,10 @@ def edit_ticket(request, ticket_id):
 @login_required
 def edit_critique(request, critique_id):
     critique = get_object_or_404(models.Critique, id=critique_id)
+<<<<<<< HEAD
     ticket = critique.ticket
+=======
+>>>>>>> f3dc60dde3dd6edbe4a2fcebb4307cc0156b0a30
     edit_critique_form = forms.CritiqueForm(instance=critique)
     delete_critique_form = forms.CritiqueFormDelete()
     if request.method == 'POST':
@@ -145,7 +199,13 @@ def edit_critique(request, critique_id):
                 return redirect('home')
     context = {
         'edit_critique_form': edit_critique_form,
+<<<<<<< HEAD
         'delete_critique_form': delete_critique_form,
         'ticket': ticket
     }
     return render(request, 'blog/edit_critique.html', context)
+=======
+        'delete_critique_form': delete_critique_form
+    }
+    return render(request,'blog/edit_critique.html', context)
+>>>>>>> f3dc60dde3dd6edbe4a2fcebb4307cc0156b0a30

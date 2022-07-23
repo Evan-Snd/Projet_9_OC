@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+<<<<<<< HEAD
     <h2>Modifier le ticket :</h2>
     <div class="form form__edit_ticket">
         <form method="post">
@@ -9,13 +10,25 @@
             </div>
             <h3>Sauvegarder le ticket ?</h3>
             <button class="button_edit_ticket_save" type="submit" >Sauvegarder</button>
+=======
+    <div class="form form__review">
+        <h2>Modifier le ticket</h2>
+        <form method="post">
+            {{ edit_ticket_form.as_p }}
+            {% csrf_token %}
+            <button type="submit" >Sauvegarder</button>
+>>>>>>> f3dc60dde3dd6edbe4a2fcebb4307cc0156b0a30
         </form>
         <hr>
         <h3>Supprimer le ticket ?</h3>
         <form method="post">
             {{ delete_ticket_form }}
             {% csrf_token %}
+<<<<<<< HEAD
             <button class="button_edit_ticket_delete" type="submit" >Supprimer</button>
+=======
+            <button type="submit" >Supprimer</button>
+>>>>>>> f3dc60dde3dd6edbe4a2fcebb4307cc0156b0a30
         </form>
     </div>
 {% endblock content %}

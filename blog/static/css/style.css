@@ -1,0 +1,42 @@
+html {
+    font-family: Arial;
+}
+
+/* The sidebar menu */
+.topbar {
+  width: auto;
+  border: 3px solid rgb(111,41,97);
+  border-radius: .5em;
+  padding: 10px;
+  margin-bottom: 20px;
+  margin-right: 450px;
+  margin-left: 450px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.menu_navigation {
+  padding: 10px;
+}
+
+.menu_disconnect {
+  margin-left: 350px;
+  text-align: right;
+}
+
+.menu_navigation, .menu_disconnect {
+  display: inline;
+}
+
+
+.main {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.critique_button, .ticket_button {
+  margin-bottom: 30px;
+}

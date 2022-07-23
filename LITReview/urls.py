@@ -32,11 +32,18 @@ urlpatterns = [
 
     # Blog app
     path('home/', blog.views.home, name='home'),
+<<<<<<< HEAD
     path('my-posts/<str:user>/', blog.views.my_post, name='my_posts'),
     path('create-ticket/', blog.views.create_ticket, name='create_ticket'),
     path('edit_ticket/<int:ticket_id>/', blog.views.edit_ticket, name="edit_ticket"),
     path('create-critique/<int:ticket_id>/', blog.views.create_critique, name='create_critique'),
     path('create-critique/', blog.views.create_ticket_and_critique, name='create_ticket_and_critique'),
+=======
+    path('create-ticket/', blog.views.create_ticket, name='create_ticket'),
+    path('edit_ticket/<int:ticket_id>/', blog.views.edit_ticket, name="edit_ticket"),
+    path('create-critique/<int:ticket_id>/', blog.views.create_critique, name='create_critique'),
+    path('create-critique', blog.views.create_ticket_and_critique, name='create_ticket_and_critique'),
+>>>>>>> f3dc60dde3dd6edbe4a2fcebb4307cc0156b0a30
     path('edit_critique/<int:critique_id>/', blog.views.edit_critique, name="edit_critique"),
 
     # Subscription app
